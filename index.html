@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+.circle1{
+        box-shadow: 0 0 50px #d84869;
+        background: linear-gradient(-25deg, #d84869, #f46641);
+        animation: circleAnimation 15s infinite;
+       }
+
+       @keyframes circleAnimation {
+        50% {
+            left: 33%;
+            top:4%;
+            scale: 1.11;
+        }
+        
+       }
+
+       .circle2{
+        box-shadow: 0 0 50px #5648d8;
+        background: linear-gradient(-25deg, #5648d8, #8641f4);
+        animation: circle2Animation 15s infinite;
+       }
+
+       @keyframes circle2Animation {
+        50% {
+            bottom: 6%;
+            right: 31%;
+        }              
+       }
+
+/* .content{
+    background-color: #5f5f5f83;
+} */
+
+  </style>
+</head>
+<body>
+
+    <div class=" w-[100vw] h-[100vh] flex flex-col justify-center items-center bg-cyan-950 ">
+        <div class="circle1 rounded-full bg-[#d84869] w-[200px] h-[200px] absolute fixed top-[100px] left-[25%]" ></div>
+        <div class="circle2 rounded-full bg-[#5648d8] w-[200px] h-[200px] absolute fixed bottom-[100px] right-[25%]" ></div>
+
+
+        <div class="content bg-[#ffffff1a] w-[400px] pl-10 pr-10 pb-5 pt-5 rounded-lg backdrop-blur-lg flex flex-col justify-center items-center">
+            <h1 class="font-bold mb-[5px] text-[25px] text-[#F9F5F6]">Temperature Converter</h1>
+            <div class="w-[90px] bg-[#FDCEDF] h-[3px] mb-[15px] rounded-sm"></div>
+
+            <div class="container text-[20px]">
+
+            <label class="text-[#E3F4F4]" for="celsius">Celsius:</label>
+            <input  class="outline-none mb-[10px] rounded-sm bg-[#ffffff00] border-b-[2px] border-[#E3F4F4] text-[#E3F4F4]" id="celsius" />
+           
+            <br/>
+            <label class="text-[#E3F4F4]" for="fahrenheit">Fahrenheit:</label>
+            <input class="bg-[#ffffff00] text-[#E3F4F4] border-b-[2px] border-[#E3F4F4]" type="text" id="fahrenheit" disabled />
+            <br>
+            <div class="flex justify-center align-center">
+                <button class=" p-2 border-[2px] rounded-lg m-[10px]  text-[15px] text-white font-bold hover:text-cyan-950 hover:bg-[#D2E9E9]" onclick="convertTemperature()">Convert</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+  <script>
+    function convertTemperature() {
+  // Get input value
+  var celsiusInput = document.getElementById('celsius');
+  var celsius = parseFloat(celsiusInput.value);
+
+  // Check if the input is a valid number
+  if (isNaN(celsius)) {
+    alert('Please enter a valid number for Celsius temperature.');
+    return;
+  }
+
+  // Convert Celsius to Fahrenheit
+  var fahrenheit = (celsius * 9/5) + 32;
+
+  // Display the result
+  var fahrenheitInput = document.getElementById('fahrenheit');
+  fahrenheitInput.value = fahrenheit.toFixed(2);
+}
+
+  </script>
+</body>
+</html>
